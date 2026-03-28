@@ -1,11 +1,16 @@
+import os
+from dotenv import load_dotenv
 from langchain_community.chat_models.tongyi import ChatTongyi
 from langchain_community.embeddings import DashScopeEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_core.output_parsers import StrOutputParser
 
+# 加载 .env 文件
+load_dotenv()
+
 chat = ChatTongyi(
-    dashscope_api_key="sk-b01fa56960e0483ab12dff7a7577129f",
+    dashscope_api_key=os.getenv("DASHSCOPE_API_KEY"),
     model="qwen3-max"
 )
 
@@ -16,7 +21,7 @@ prompt = ChatPromptTemplate.from_messages([
 
 vector_store = InMemoryVectorStore(
     embedding=DashScopeEmbeddings(
-        dashscope_api_key="sk-b01fa56960e0483ab12dff7a7577129f",
+        dashscope_api_key=os.getenv("DASHSCOPE_API_KEY"),
         model="text-embedding-v4"
     )
 )

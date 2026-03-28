@@ -1,6 +1,11 @@
+import os
+from dotenv import load_dotenv
 from langchain_community.document_loaders import CSVLoader
 from langchain_community.embeddings import DashScopeEmbeddings
 from langchain_chroma import Chroma
+
+# 加载 .env 文件
+load_dotenv()
 
 loader = CSVLoader(
     file_path="data/info.csv",
@@ -10,7 +15,7 @@ loader = CSVLoader(
 
 vector_store = Chroma(
     collection_name="info",
-    embedding_function=DashScopeEmbeddings(dashscope_api_key="sk-b01fa56960e0483ab12dff7a7577129f"),
+    embedding_function=DashScopeEmbeddings(dashscope_api_key=os.getenv("DASHSCOPE_API_KEY")),
     persist_directory="data/chroma_db"
 )
 

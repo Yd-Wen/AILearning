@@ -1,8 +1,13 @@
+import os
 from openai import OpenAI
+from dotenv import load_dotenv
+
+# 加载 .env 文件
+load_dotenv()
 
 # 1. 获取client对象
 client: OpenAI = OpenAI(
-    api_key="sk-b01fa56960e0483ab12dff7a7577129f",
+    api_key=os.getenv("DASHSCOPE_API_KEY"),
     base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
 )
 completion = client.chat.completions.create(

@@ -1,6 +1,11 @@
+import os
+from dotenv import load_dotenv
 from langchain_community.document_loaders import CSVLoader
 from langchain_community.embeddings import DashScopeEmbeddings
 from langchain_core.vectorstores import InMemoryVectorStore
+
+# 加载 .env 文件
+load_dotenv()
 
 loader = CSVLoader(
     file_path="data/info.csv",
@@ -9,7 +14,7 @@ loader = CSVLoader(
 )
 
 vector_store = InMemoryVectorStore(
-    embedding=DashScopeEmbeddings(dashscope_api_key="sk-b01fa56960e0483ab12dff7a7577129f")
+    embedding=DashScopeEmbeddings(dashscope_api_key=os.getenv("DASHSCOPE_API_KEY"))
 )
 
 document = loader.load()

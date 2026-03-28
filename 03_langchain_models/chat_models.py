@@ -1,10 +1,15 @@
+import os
+from dotenv import load_dotenv
 from langchain_community.chat_models import ChatTongyi
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
+
+# 加载 .env 文件
+load_dotenv()
 
 # 实例化模型
 # 不用用qwen-max大语言模型
 # 使用qwen3-max聊天模型
-chat = ChatTongyi(api_key="sk-b01fa56960e0483ab12dff7a7577129f", model="qwen3-max")
+chat = ChatTongyi(api_key=os.getenv("DASHSCOPE_API_KEY"), model="qwen3-max")
 
 # 准备消息
 messages = [

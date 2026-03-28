@@ -1,10 +1,15 @@
+import os
+from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate, ChatPromptTemplate, MessagesPlaceholder
 from langchain_community.chat_models.tongyi import ChatTongyi
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.chat_history import InMemoryChatMessageHistory
 
-chat = ChatTongyi(api_key="sk-b01fa56960e0483ab12dff7a7577129f", model="qwen3-max")
+# 加载 .env 文件
+load_dotenv()
+
+chat = ChatTongyi(api_key=os.getenv("DASHSCOPE_API_KEY"), model="qwen3-max")
 
 base_prompt = ChatPromptTemplate.from_messages([
     ("system", "请根据历史会话记录回答问题，历史会话："),

@@ -1,7 +1,12 @@
+import os
+from dotenv import load_dotenv
 from langchain_community.embeddings import DashScopeEmbeddings
 
+# 加载 .env 文件
+load_dotenv()
+
 embedding = DashScopeEmbeddings(
-    dashscope_api_key="sk-b01fa56960e0483ab12dff7a7577129f",
+    dashscope_api_key=os.getenv("DASHSCOPE_API_KEY"),
     model="text-embedding-v1"
 )
 

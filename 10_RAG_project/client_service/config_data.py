@@ -1,7 +1,13 @@
+import os
+from dotenv import load_dotenv
+
+# 加载 .env 文件
+load_dotenv()
+
 md5_path = "./md5.text"
 
-# Dashscope_api_key = os.environ.get("Dashscope_api_key")
-dashscope_api_key = "sk-b01fa56960e0483ab12dff7a7577129f"
+# 从环境变量获取 API Key
+dashscope_api_key = os.getenv("DASHSCOPE_API_KEY")
 
 # Chroma
 collection_name = "rag"

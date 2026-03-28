@@ -75,4 +75,5 @@ chat_history/
 chroma_db/
 md5.txt
 /.devcontainer
+/.claude
 

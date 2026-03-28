@@ -1,7 +1,12 @@
+import os
+from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_community.chat_models.tongyi import ChatTongyi
 
-chat = ChatTongyi(api_key="sk-b01fa56960e0483ab12dff7a7577129f", model="qwen3-max")
+# 加载 .env 文件
+load_dotenv()
+
+chat = ChatTongyi(api_key=os.getenv("DASHSCOPE_API_KEY"), model="qwen3-max")
 
 chat_prompt = ChatPromptTemplate.from_messages([
     ("system", "你是一个边塞诗人"),

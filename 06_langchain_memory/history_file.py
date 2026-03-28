@@ -2,12 +2,16 @@ import os
 import json
 from typing import Sequence
 
+from dotenv import load_dotenv
 from langchain_community.chat_models import ChatTongyi
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.messages import message_to_dict, messages_from_dict, BaseMessage
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables import RunnableWithMessageHistory
+
+# 加载 .env 文件
+load_dotenv()
 
 # message_to_dict: 单个消息对象（BaseMessage类实例） -> 字典
 # messages_from_dict: 字典列表 -> BaseMessage类实例列表
@@ -48,7 +52,7 @@ class FileChatMessageHistory(BaseChatMessageHistory):
             json.dump([], f)
 
 
-chat = ChatTongyi(api_key="sk-b01fa56960e0483ab12dff7a7577129f", model="qwen3-max")
+chat = ChatTongyi(api_key=os.getenv("DASHSCOPE_API_KEY"), model="qwen3-max")
 
 base_prompt = ChatPromptTemplate.from_messages([
     ("system", "请根据历史会话记录回答问题，历史会话："),
