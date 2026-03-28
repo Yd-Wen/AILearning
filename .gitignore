@@ -1,0 +1,78 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+/.idea
+/06_langchain_memory/chat_history
+/07_langchain_loaders/data
+/08_vector_store/data
+/10_RAG_project/client_service/chat_history
+/10_RAG_project/client_service/chroma_db
+/10_RAG_project/client_service/md5.txt
+/10_RAG_project/client_service/data
+/11_FastAPI/file
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# Environment variables & secrets
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+*.crt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs & databases
+*.log
+*.sqlite
+*.db
+*.sqlite3
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Project specific
+chat_history/
+chroma_db/
+md5.txt
+/.devcontainer
+

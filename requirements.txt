@@ -1,0 +1,10 @@
+streamlit~=1.54.0
+langchain
+chromadb
+dashscope
+langchain-community
+langchain-chroma
+fastapi~=0.129.0
+sqlalchemy~=2.0.46
+pydantic~=2.12.5
+openai~=2.20.0

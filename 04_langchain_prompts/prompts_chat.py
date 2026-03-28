@@ -1,0 +1,28 @@
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_community.chat_models.tongyi import ChatTongyi
+
+chat = ChatTongyi(api_key="sk-b01fa56960e0483ab12dff7a7577129f", model="qwen3-max")
+
+chat_prompt = ChatPromptTemplate.from_messages([
+    ("system", "你是一个边塞诗人"),
+    ("human", "请作一首唐诗"),
+    MessagesPlaceholder('history'),
+    ("human", "仿照之前你给出的唐诗，作一首边塞诗")
+])
+
+history_data = [
+    ("ai", "锄禾日当午，汗滴禾下土。谁知盘中餐，粒粒皆辛苦。"),
+    ("human", "再作一首"),
+    ("ai", "床前明月光，疑是地上霜。举头望明月，低头思故乡。"),
+]
+
+# prompt_text = chat_prompt.invoke({'history': history_data}).to_string()
+# print(prompt_text)
+
+# res = chat.invoke(prompt_text)
+# print(res.content)
+
+chain = chat_prompt | chat
+# print(chain.invoke({'history': history_data}).content)
+for chunk in chain.stream({'history': history_data}):
+    print(chunk.content, end="", flush=True)
